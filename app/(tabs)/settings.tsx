@@ -13,7 +13,7 @@ export default function Settings() {
     
     return (
         <View style={styles.container}>
-            <Text>Settings</Text>
+            <Text className="3xl color-blue-200">Settings</Text>
         </View>
     )
 }

@@ -1,10 +1,11 @@
 import HeaderTask from "@/components/HeaderTask";
+import TaskCards from "@/components/TaskCards";
 import WeekDays from "@/components/WeekDays";
 import { BlurView } from "expo-blur";
 import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 
 const AppBackground = require('../../assets/images/app-background.jpg'); 
 
@@ -32,18 +33,27 @@ export default function Home(){
       width: '100%',
       height: '100%',
     },
+    safeZone: {
+      flex: 1,
+    }
   });
   
   return (
     <>
     <StatusBar style="light"/>
+    <SafeAreaView style={styles.safeZone}>
     <View style={styles.container}>
       <Image source={AppBackground} style={styles.image} />
-      <BlurView intensity={10} style={styles.blurContainer}>
-        <HeaderTask />
-        <WeekDays />
+      <BlurView intensity={30} style={styles.blurContainer}>
+        <ScrollView>
+        <HeaderTask/>
+        <WeekDays/>
+        <TaskCards/>
+        </ScrollView>
       </BlurView>
     </View>
+    </SafeAreaView>
+  
     </>
   )
 }

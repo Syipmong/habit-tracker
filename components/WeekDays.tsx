@@ -11,18 +11,22 @@ export default function WeekDays() {
         container: {
             flex: 1,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             flexDirection: 'row',
             borderRadius: 18,
+            
         },
         text: {
             fontSize: 16,
             textAlign: 'center',
             color: colorScheme === 'dark' ? '#fff' : '#333',
-            width: '14%',
+            // width: '20%',
+            // height: '40%',
             padding: 10,
-            borderRadius: 18,
+            // borderRadius: 18,
             margin: 5,
+            backgroundColor: '#f3f3f3',
+            
         }
     });
 
