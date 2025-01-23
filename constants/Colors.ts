@@ -26,3 +26,15 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
 };
+
+export const Habit_Tracker_Colors = {
+        primary: '#9C27B0', // Purple
+        secondary: '#4FC3F7', // Blue
+        accent: '#F06292', // Pink
+        success: '#4CAF50', // Green
+        gray: {
+          light: '#F5F5F5', // Light Gray
+          medium: '#757575', // Medium Gray
+          dark: '#333333', // Dark Gray
+        }
+}
