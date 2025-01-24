@@ -2,12 +2,49 @@ import { Habit_Tracker_Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme.web";
 import React from "react";
 import { View, StyleSheet, SafeAreaView, ScrollView, Text } from "react-native";
+import { Image } from "react-native";
 
 export default function Home() {
   const colorScheme = useColorScheme();
   const user = 'Yipmong';
   const date = new Date();
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const testImage = require('../../assets/images/app-background.jpg');
+  interface TaskProps {
+      id: number;
+      title: string;
+      description: string;
+      image?: string;
+      completed: boolean;
+    }
+
+  const tasksList = [
+    {
+      id: 1,
+      title: "Task 1",
+      description: "This is task 1",
+      image: '',
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Task 2",
+      description: "This is task 2",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "Task 3",
+      description: "This is task 3",
+      completed: false,
+    },
+    {
+      id: 4,
+      title: "Task 4",
+      description: "This is task 4",
+      completed: false,
+    },
+  ]
 
   const generateDates = () => {
     const dates = [];
@@ -43,7 +80,7 @@ export default function Home() {
       justifyContent: 'space-evenly',
     },
     calendarContainer: {
-      width: '95%',
+      width: '100%',
       height: 100,
       // backgroundColor: Habit_Tracker_Colors.secondary,
       borderRadius: 18,
@@ -77,11 +114,11 @@ export default function Home() {
       <View style={styles.calendarContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexDirection: 'row' }}>
           {dates.map(({ day, date }, index) => (
-            <View key={index} style={{ backgroundColor: Habit_Tracker_Colors.gray.light, padding: 20, margin: 5, borderRadius: 18 }}>
-              <Text style={{ color: Habit_Tracker_Colors.gray.dark, fontSize: 16 }}>
+            <View key={index} style={{ backgroundColor: colorScheme === 'dark' ? Habit_Tracker_Colors.gray.light : Habit_Tracker_Colors.gray.dark, padding: 20, margin: 5, borderRadius: 18 }}>
+              <Text style={{ color: colorScheme === 'light'? Habit_Tracker_Colors.gray.light: Habit_Tracker_Colors.gray.dark, fontSize: 16 }}>
                 {day}
               </Text>
-              <Text>
+              <Text style={{ color: colorScheme === 'light'? Habit_Tracker_Colors.gray.light: Habit_Tracker_Colors.gray.dark, fontSize: 16 }}>
                 {date}
               </Text>
             </View>
@@ -89,7 +126,18 @@ export default function Home() {
         </ScrollView>
       </View>
       <View style={styles.taskListContainer}>
-        {/* Task list content */}
+        <ScrollView contentContainerStyle={{ flexDirection: 'column' }}>
+          {tasksList.map((task: TaskProps, index) => (
+            <View key={index} style={{ backgroundColor: colorScheme === 'dark' ? Habit_Tracker_Colors.gray.light : Habit_Tracker_Colors.gray.dark, padding: 20, margin: 5, borderRadius: 18 }}>
+              <Text style={{ color: colorScheme === 'light'? Habit_Tracker_Colors.gray.light: Habit_Tracker_Colors.gray.dark, fontSize: 16 }}>
+                {task.title}
+              </Text>
+              <Text style={{ color: colorScheme === 'light'? Habit_Tracker_Colors.gray.light: Habit_Tracker_Colors.gray.dark, fontSize: 16 }}>
+                {task.description}
+              </Text>
+            </View>
+          ))}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
